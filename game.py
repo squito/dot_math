@@ -22,8 +22,6 @@ def draw_horizontal(y):
 
 def render():
   # fill the screen with a color to wipe away anything from last frame
-  print(globals())
-  print(globals()["x"])
   global x
   global y
   screen.fill("white")
