@@ -1,3 +1,4 @@
 *.swp
 dot_math/
 __pycache__/
+.idea
