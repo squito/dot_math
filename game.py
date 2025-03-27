@@ -1,5 +1,3 @@
-global x
-global y
 x = 0
 y = 0
 
@@ -11,6 +9,31 @@ half_width = max_width / 2
 half_height = max_height / 2
 screen = pygame.display.set_mode((max_width, max_height))
 
+def reset():
+  global x
+  global y
+  x = 0
+  y = 0
+  render()
+
+
+def move_x(amount_x):
+  global x
+  x = x + amount_x
+  render()
+
+def move_y(amount_y):
+  global y
+  y = y + amount_y
+  render()
+
+def move(amount_x, amount_y):
+  global x
+  global y
+  amount_x = x + amount_x
+  amount_y = y + amount_y
+  render()
+    
 
 def draw_vertical(x):
   thickness = 10 if x == half_width else 2 
@@ -33,7 +56,7 @@ def render():
     draw_horizontal(y_pos)
   
   draw_x = (x + 4.0) * 1280 / 8
-  draw_y = (y + 4.0) * 720 / 8
+  draw_y = (-y + 4.0) * 720 / 8
   print(f"{x}, {y}; {draw_x}, {draw_y}")
   pygame.draw.circle(screen, (0, 0, 255), (draw_x, draw_y), 20, 20)
 
