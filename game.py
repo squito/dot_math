@@ -30,8 +30,8 @@ def move_y(amount_y):
 def move(amount_x, amount_y):
   global x
   global y
-  amount_x = x + amount_x
-  amount_y = y + amount_y
+  x = x + amount_x
+  y = y + amount_y
   render()
     
 
@@ -57,28 +57,42 @@ def render():
   
   draw_x = (x + 4.0) * 1280 / 8
   draw_y = (-y + 4.0) * 720 / 8
-  print(f"{x}, {y}; {draw_x}, {draw_y}")
+  # print(f"{x}, {y}; {draw_x}, {draw_y}")
   pygame.draw.circle(screen, (0, 0, 255), (draw_x, draw_y), 20, 20)
 
   # flip() the display to put your work on screen
   pygame.display.flip()
 
+def check_keys_pressed():
+  pressed = pygame.key.get_pressed()
+  if pressed[pygame.K_RIGHT]:
+    move(0.1, 0)
+
 
 def main():
   clock = pygame.time.Clock()
-
-
+  # import time
+  #
+  # render()
+  # time.sleep(1)
+  # move_x(3)
+  # time.sleep(4)
+  # move_y(1)
+  # time.sleep(4)
+  # reset()
+  # time.sleep(2)
+  # move(3,1)
   running = True
   while running:
       # poll for events
       # pygame.QUIT event means the user clicked X to close your window
       for event in pygame.event.get():
           if event.type == pygame.QUIT:
-              print("got a quit")
               running = False
+
+      check_keys_pressed()
+
       render()
-  
-  
       clock.tick(60)  # limits FPS to 60
 
   pygame.quit()
