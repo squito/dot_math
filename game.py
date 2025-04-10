@@ -65,9 +65,17 @@ def render():
 
 def check_keys_pressed():
   pressed = pygame.key.get_pressed()
+  speed = 0.05
   if pressed[pygame.K_RIGHT]:
-    move(0.1, 0)
-
+    move(amount_x=speed, amount_y=0)
+  if pressed[pygame.K_LEFT]:
+     move(amount_x=-speed, amount_y=0)
+  if pressed[pygame.K_UP]:
+     move(amount_x=0, amount_y=speed)
+  if pressed[pygame.K_DOWN]:
+    move(amount_x=0,amount_y=-speed)
+  if pressed[pygame.K_SPACE]:
+    reset()
 
 def main():
   clock = pygame.time.Clock()
